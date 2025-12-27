@@ -58,12 +58,12 @@ export const contacts: Contact[] = [
     icon: 'Code',
     description: 'Problem solving',
   },
-  {
-    name: 'Facebook',
-    url: 'https://www.facebook.com/afik.yefet',
-    icon: 'Facebook',
-    description: 'Connect',
-  },
+  // {
+  //   name: 'Facebook',
+  //   url: 'https://www.facebook.com/afik.yefet',
+  //   icon: 'Facebook',
+  //   description: 'Connect',
+  // },
 ];
 
 export const workProjects: WorkProject[] = [
