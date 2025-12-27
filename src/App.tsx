@@ -113,24 +113,24 @@ function App() {
       {/* Stats Section */}
       <Section id="stats" title="GitHub & LeetCode Stats" subtitle="My coding activity and achievements">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          <StatCard
+          {/* <StatCard
             title="GitHub Stats"
             imageUrl={stats.github.statsUrl}
             alt="GitHub statistics"
             delay={0}
-          />
+          /> */}
           <StatCard
             title="LeetCode Progress"
             imageUrl={stats.leetcode.cardUrl}
             alt="LeetCode statistics"
             delay={0.1}
           />
-          <StatCard
+          {/* <StatCard
             title="Top Languages"
             imageUrl={stats.github.languagesUrl}
             alt="Top programming languages"
             delay={0.2}
-          />
+          /> */}
           <StatCard
             title="GitHub Streak"
             imageUrl={stats.github.streakUrl}
