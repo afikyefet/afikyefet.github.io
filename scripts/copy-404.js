@@ -8,6 +8,7 @@ const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 
 try {
+  // Copy index.html to 404.html for GitHub Pages routing
   copyFileSync(
     join(rootDir, 'dist', 'index.html'),
     join(rootDir, 'dist', '404.html')
