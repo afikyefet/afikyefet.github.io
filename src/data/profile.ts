@@ -35,6 +35,12 @@ export interface EducationItem {
 
 export const contacts: Contact[] = [
   {
+    name: 'Phone',
+    url: 'tel:+972525530451',
+    icon: 'Phone',
+    description: '+972-52-553-0451',
+  },
+  {
     name: 'Email',
     url: 'mailto:afik.yefet@gmail.com',
     icon: 'Mail',
@@ -58,6 +64,12 @@ export const contacts: Contact[] = [
     icon: 'Code',
     description: 'Problem solving',
   },
+  {
+    name: 'Website',
+    url: 'https://afikyefet.com',
+    icon: 'Globe',
+    description: 'Portfolio website',
+  },
   // {
   //   name: 'Facebook',
   //   url: 'https://www.facebook.com/afik.yefet',
@@ -68,117 +80,119 @@ export const contacts: Contact[] = [
 
 export const workProjects: WorkProject[] = [
   {
-    title: 'Gear Builder',
-    description: 'Modular Shopify-based product configurator',
+    title: 'Full-Stack Developer — Agilite Tactical Gear',
+    description: 'August 2025 – Present',
     bullets: [
-      'Real-time rendering of product combinations',
-      'Smart variant logic and inventory management',
-      'Seamless Shopify integration with Liquid templates',
+      'Architected and shipped a custom Shopify Gear Builder (Liquid, JavaScript, CSS) across 3 global storefronts, resulting in a 20%+ increase in add-on sales.',
+      'Developed a browser-based overlay tool (Vite, React) integrating with legacy warehouse systems, reducing manual data entry for returns and exchanges by ~90%.',
+      'Built “Agilite Frame,” an internal video review platform, reducing review cycles by 30–50% and saving up to $3,000/year in external SaaS subscriptions.',
+      'Built an RAG AI CS chatbot and am building a B2B store solution using React, TypeScript, and Go.',
+      'Own end-to-end delivery (CI/CD, QA, UI/UX) for products supporting 6,000+ monthly orders, integrating backend endpoints for event tracking and analytics optimization.',
     ],
-    tags: ['Shopify', 'Liquid', 'JavaScript', 'React'],
+    tags: ['React', 'TypeScript', 'Node.js', 'Shopify', 'Liquid', 'Vite', 'Go', 'CI/CD'],
+    impactBadge: '6,000+ monthly orders',
   },
   {
-    title: 'HR Employee Evaluation System',
-    description: 'Role-based access with automated PDF generation',
+    title: 'Customer Support & Technical Operations — Agilite Tactical Gear',
+    description: 'January 2025 – August 2025',
     bullets: [
-      'Role-based access control for managers and employees',
-      'Automated PDF generation with custom templates',
-      'Streamlined evaluation workflow',
+      'Managed daily customer support tickets (Zendesk) and coordinated with the US warehouse on shipping and RMA issues.',
+      'Acted as technical point of contact for order system errors, bridging support and development.',
+      'Created apps to standardize responses and automate repetitive tagging tasks before transitioning to full-stack development.',
     ],
-    tags: ['Node.js', 'MongoDB', 'PDF Generation', 'Express'],
-  },
-  {
-    title: 'Video Feedback Platform',
-    description: 'Timestamped feedback with timeline interactions',
-    bullets: [
-      'Real-time timestamped feedback system',
-      'Interactive timeline for video annotations',
-      'Backend syncing and collaboration features',
-    ],
-    tags: ['React', 'Node.js', 'WebSockets', 'MongoDB'],
-  },
-  {
-    title: 'Internal CS Browser Tool',
-    description: 'Automated workflows for customer service',
-    bullets: [
-      'Automated data entry and workflow management',
-      'Browser extension for seamless integration',
-      'Reduced manual work by ~90%',
-    ],
-    tags: ['Chrome Extension', 'Automation', 'JavaScript', 'TypeScript'],
-    impactBadge: '-90% manual work',
+    tags: ['Customer Support', 'Zendesk', 'Operations', 'Automation'],
   },
 ];
 
 export const personalProjects: PersonalProject[] = [
   {
-    title: 'FluxFill',
-    description: 'Productivity Chrome extension',
+    title: 'RAG AI Customer Support Chatbot',
+    description: 'End-to-end RAG chatbot for support questions using internal knowledge',
     bullets: [
-      'Capture and save UI elements across websites',
-      'Reuse saved elements for faster workflows',
-      'Cross-site element management',
+      'Built an end-to-end RAG chatbot to answer support questions using internal knowledge (policies, product info, macros).',
+      'Implemented vector search retrieval and response grounding to reduce hallucinations and keep answers consistent.',
+      'Added escalation paths for “can’t resolve” cases (structured handoff and ticket-ready summaries).',
     ],
-    tags: ['Chrome Extension', 'JavaScript', 'Productivity'],
+    tags: ['RAG', 'AI', 'Vector Search', 'Automation'],
   },
   {
-    title: 'Hybet',
-    description: 'Real-time poker dashboard',
+    title: 'Agilite Gear Builder (Shopify Product Configurator)',
+    description: 'Dynamic “Gear Builder” experience with complex dependency rules and stacking logic',
     bullets: [
-      'Live poker statistics and analytics',
-      'Real-time updates via WebSockets',
-      'React frontend with Node.js backend',
+      'Developed complex dependency rules and multi-layer stacking logic on Shopify.',
+      'Built variant-aware UI behavior (syncing, validation, gating) to prevent invalid configurations.',
+      'Optimized UX for speed and resilience to edge cases.',
     ],
-    tags: ['React', 'Node.js', 'WebSockets', 'MongoDB'],
+    tags: ['Shopify', 'Liquid', 'JavaScript', 'UX'],
+  },
+  {
+    title: 'Agilite Frame (Internal Video Collaboration Tool)',
+    description: 'Frame.io-style internal review tool for faster creative iteration',
+    bullets: [
+      'Built an internal review tool for teams to share videos and collaborate in one place.',
+      'Implemented timestamped feedback flows, organized threads, and permission-aware sharing.',
+      'Optimized for quick reviews and clear context during iterations.',
+    ],
+    tags: ['React', 'Node.js', 'Collaboration', 'UX'],
+  },
+  {
+    title: 'Productivity Browser Extension for Customer Support',
+    description: 'Browser-based overlay tool integrating with legacy warehouse systems',
+    bullets: [
+      'Built an overlay tool to speed up daily CS workflows on a legacy warehouse system.',
+      'Reduced manual data entry for returns/exchanges by ~90% by automating repetitive steps and standardizing inputs.',
+      'Designed for real support pressure: fast UI, minimal clicks, reliable behavior.',
+    ],
+    tags: ['Browser Extension', 'Vite', 'React', 'Automation'],
   },
 ];
 
 export const techStack: TechCategory[] = [
   {
     category: 'Frontend',
-    items: ['React', 'TypeScript', 'JavaScript', 'Redux', 'HTML', 'CSS/SASS'],
+    items: ['React', 'TypeScript', 'JavaScript', 'Redux', 'HTML5', 'CSS3/SASS'],
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express', 'MongoDB', 'REST APIs', 'Firebase'],
+    items: ['Node.js', 'Express', 'Go', 'MongoDB', 'REST APIs', 'WebSockets', 'Cron Jobs', 'Webhooks'],
   },
   {
     category: 'Tools',
-    items: ['Git', 'Google Cloud', 'Chrome Extensions', 'Shopify Liquid'],
+    items: ['Git', 'GitHub Actions', 'Google Cloud', 'Shopify Liquid', 'Docker', 'Chrome Extensions', 'Cursor', 'Claude Code'],
   },
   {
     category: 'Other',
-    items: ['WebSockets', 'PDF Generation', 'Automation'],
+    items: ['SQL', 'BigQuery', 'CI/CD Pipelines', 'Postman/HTTP Debugging', 'Automation'],
   },
 ];
 
 export const education: EducationItem[] = [
   {
-    degree: 'B.Sc. Computer Science',
+    degree: 'B.Sc. in Computer Science (In Progress, Started 2025)',
     institution: 'Open University of Israel',
     period: '2025–present',
-    description: 'In progress',
   },
   {
     degree: 'Full-Stack Web Development Bootcamp',
     institution: 'Coding Academy',
     period: '2024',
-    description: 'Intensive full-stack program',
+    description: 'Intensive training in MERN Stack (MongoDB, Express, React, Node.js).',
   },
 ];
 
 export const aboutCards = [
   {
-    title: 'About me',
-    description: 'Full-stack developer passionate about building tools that make work easier and more efficient.',
+    title: 'Professional summary',
+    description:
+      'Full-stack developer at Agilite building customer-facing features and internal tools that improve speed, accuracy, and day-to-day operations.',
   },
   {
-    title: 'What I care about',
-    description: 'Clean code, user experience, and solving real problems with elegant solutions.',
+    title: 'What I optimize for',
+    description: 'Clean UI, reliability, and accessibility — with strong product thinking and UX.',
   },
   {
     title: 'How I work',
-    description: 'Data-driven, collaborative, and focused on delivering measurable impact.',
+    description: 'End-to-end ownership: product thinking → UX → backend logic → deployment and iteration.',
   },
 ];
 

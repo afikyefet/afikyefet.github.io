@@ -1,0 +1,139 @@
+Afik Yefet
+ - 
+Full-Stack Developer
+Phone:
+ +972-525530451 | 
+E-mail:
+ 
+afik.yefet@gmail.com
+ 
+|
+ 
+LinkedIn:
+ 
+https://il.linkedin.com/in/afik-yefet-906757326
+GitHub
+: 
+https://github.com/afikyefet
+ | 
+Website
+: 
+https://afikyefet.com
+PROFESSIONAL SUMMARY
+Full-stack developer at 
+Agilite
+, building customer-facing features and internal tools that improve speed, accuracy, and day-to-day operations. I work across React/TypeScript and Node.js, integrating with Shopify and third-party systems, and I care a lot about clean UI, reliability, and accessibility. I like owning features end-to-end, from product thinking and UX to backend logic and deployment.
+TECHNICAL SKILLS
+•  
+Frontend:
+ React, TypeScript,
+ JavaScript,
+ Redux, HTML5, CSS3/SASS.
+•  
+Backend:
+ Node.js, Express,
+ 
+Go
+ 
+golang
+, 
+ MongoDB, REST APIs, 
+WebSockets
+, 
+Cron Jobs
+, Webhook
+.
+•  
+Tools & Platforms:
+ Git
+, 
+Github
+ Actions
+, Google Cloud, Shopify Liquid
+, Dockers
+, Cursor, Claude Code
+.
+•  
+Data:
+ MongoDB, SQL, GCP & 
+BigQuery
+, CI/CD
+ Pipelines
+, Postman/HTTP Debugging, Browser Extension APIs.
+PROFESSIONAL EXPERIENCE
+Agilite
+ Tactical Gear | Israel
+Full Stack 
+Developer (
+August 2025 – Present)
+•  
+E-Commerce Engineering: 
+Architected and shipped a custom Shopify Gear Builder (Liquid, JavaScript, CSS) across 3 global storefronts. 
+Engineered complex frontend logic for dynamic product configuration, stacking layers, and dependency rules, resulting in a 20%+ increase in add-on sales.
+•  
+Operational Automation: 
+Developed a browser-based overlay tool (Vite, React) that integrates with legacy warehouse systems, reducing manual data entry for returns and exchanges by ~90%.
+•  
+Internal Tooling (SaaS Replacement): 
+Built “
+Agilite
+ Frame,” an internal video review platform, reducing review cycles by 30-50% and saving the company up to $3,000/year in external SaaS subscriptions.
+•  
+Data Pipeline & AI: 
+built 
+an RAG AI cs chatbot and am currently building a b2b store solution using React, TypeScript, and Go
+.
+•  
+Full Lifecycle Ownership: 
+Manage the end-to-end delivery cycle (CI/CD, QA, UI/UX) for products supporting 6,000+ monthly orders, integrating backend endpoints for event tracking and analytics optimization.
+Customer Support & Technical Operations (January 2025 – August 2025)
+•  Managed daily customer support tickets (Zendesk) and communicated with the US warehouse regarding shipping and RMA issues.
+•  Acted as the technical point of contact for order system errors, helping bridge the gap between the support team and developers.
+•  
+Process Improvement:
+ Created 
+apps 
+to standardize responses and automate repetitive tagging tasks before officially moving to 
+become a full-stack
+ developer
+.
+PROJECTS
+RAG AI Customer Support Chatbot
+•  
+Built an end-to-end RAG chatbot to answer support questions using internal knowledge (policies, product info, macros) instead of generic responses
+•  
+V
+ector search retrieval, and response grounding to reduce hallucinations and keep answers consistent
+•  Added escalation paths for “can’t resolve” cases (structured handoff and ticket-ready summaries)
+Agilite
+ Gear Builder (Shopify Product Configurator)
+•  
+Developed a dynamic “Gear Builder” experience on Shopify with complex dependency rules and multi-layer stacking logic
+•  
+Built variant-aware UI behavior (color/size syncing, validation, and gating) to prevent invalid configurations
+•  
+Focused on fast UX: predictable state handling, clean rendering, and resilience to edge cases
+Agilite
+ Frame (Internal Video Collaboration Tool)
+•  
+Built an internal “Frame.io-style” review tool for teams to share videos and collaborate in one place
+•  
+Implemented timestamped feedback flows, organized threads, and lightweight permission-aware sharing
+•  Optimized for quick reviews and clear context during creative iterations
+Productivity Browser Extension for Customer Support (Internal Tooling)
+•  
+Built a browser-based overlay tool that integrates with a legacy warehouse system to speed up daily CS workflows
+•  
+Reduced manual data entry for returns/exchanges by ~90% by automating repetitive steps and standardizing inputs
+•  Designed it to be practical under real support pressure: fast UI, minimal clicks, and reliable behavior
+EDUCATION
+Open University of Israel
+ - 
+B.Sc. in Computer Science (In Progress, Started 2025)
+Coding Academy
+ - 
+Full-Stack Web Development Bootcamp (2024)
+ | 
+Intensive
+ 
+training in MERN Stack (MongoDB, Express, React, Node.js).

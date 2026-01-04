@@ -1,318 +1,503 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Download } from 'lucide-react';
-import { Chip } from './components/Chip';
-import { Header } from './components/Header';
-import { InfoCard } from './components/InfoCard';
-import { ProjectCard } from './components/ProjectCard';
-import { ScrollToTop } from './components/ScrollToTop';
-import { Section } from './components/Section';
-import { StatCard } from './components/StatCard';
+import { useMemo, useState } from 'react';
+import {
+  Badge,
+  Button,
+  Collapse,
+  Descriptions,
+  Divider,
+  Drawer,
+  Flex,
+  FloatButton,
+  Layout,
+  List,
+  Menu,
+  Row,
+  Col,
+  Space,
+  Statistic,
+  Steps,
+  Tabs,
+  Tag,
+  Timeline,
+  Typography,
+  Image,
+  Grid,
+} from 'antd';
+import {
+  AppstoreOutlined,
+  BarChartOutlined,
+  CodeOutlined,
+  DownloadOutlined,
+  GithubOutlined,
+  GlobalOutlined,
+  LaptopOutlined,
+  LinkedinOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  RocketOutlined,
+  SafetyCertificateOutlined,
+} from '@ant-design/icons';
 import { aboutCards, contacts, education, personalProjects, stats, techStack, workProjects } from './data/profile';
-import { getIcon } from './utils/icons';
 
 function App() {
-  const scrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const { useBreakpoint } = Grid;
+  const screens = useBreakpoint();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const sections = useMemo(
+    () => [
+      { key: 'about', label: 'About', icon: <SafetyCertificateOutlined /> },
+      { key: 'work', label: 'Work', icon: <LaptopOutlined /> },
+      { key: 'projects', label: 'Projects', icon: <RocketOutlined /> },
+      { key: 'tech', label: 'Tech', icon: <CodeOutlined /> },
+      { key: 'stats', label: 'Stats', icon: <BarChartOutlined /> },
+      { key: 'education', label: 'Education', icon: <AppstoreOutlined /> },
+      { key: 'contact', label: 'Contact', icon: <MailOutlined /> },
+    ],
+    [],
+  );
+
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const contactIcon = (name: string) => {
+    switch (name) {
+      case 'Email':
+        return <MailOutlined />;
+      case 'Phone':
+        return <PhoneOutlined />;
+      case 'LinkedIn':
+        return <LinkedinOutlined />;
+      case 'GitHub':
+        return <GithubOutlined />;
+      case 'LeetCode':
+        return <CodeOutlined />;
+      case 'Website':
+        return <GlobalOutlined />;
+      default:
+        return <GlobalOutlined />;
     }
   };
 
+  const topKpis = useMemo(
+    () => [
+      { title: 'Work Projects', value: workProjects.length },
+      { title: 'Personal Projects', value: personalProjects.length },
+      { title: 'Tech Categories', value: techStack.length },
+    ],
+    [],
+  );
+
   return (
-    <div className="min-h-screen surface-grid">
-      <Header />
-      <ScrollToTop />
-
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-10">
+    <Layout style={{ background: 'transparent' }}>
+      <Layout.Header
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 10,
+          background: 'rgba(5, 7, 17, 0.72)',
+          backdropFilter: 'blur(14px)',
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
+          paddingInline: 16,
+        }}
+      >
         <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <motion.div
-                className="kicker mb-4"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                High-Tech Web Engineering
-              </motion.div>
-          <motion.h1
-                className="font-display text-5xl sm:text-6xl lg:text-7xl tracking-tight mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-                <span className="text-gradient animate-shimmer">Afik Yefet</span>
-          </motion.h1>
-          <motion.p
-                className="text-xl sm:text-2xl text-white/75 mb-8 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Full-Stack Developer at Agilite
-            <br />
-                <span className="text-lg sm:text-xl text-white/60">Building internal tools + products</span>
-          </motion.p>
-          <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-start mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <button
-              onClick={() => scrollTo('projects')}
-                  className="btn-primary"
-            >
-              View Projects
-              <ArrowRight size={18} />
-            </button>
-            <button
-              onClick={() => scrollTo('contact')}
-                  className="btn-ghost"
-            >
-              Contact
-            </button>
-          </motion.div>
-          <motion.div
-                className="flex flex-wrap gap-2 justify-start"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            {['React', 'TypeScript', 'Node.js', 'MongoDB', 'Shopify'].map((tech) => (
-              <Chip key={tech}>{tech}</Chip>
-            ))}
-          </motion.div>
-            </div>
+          <Flex align="center" justify="space-between" gap={12}>
+            <Space size={10} align="center">
+              <Badge color="cyan" />
+              <Typography.Text strong style={{ color: 'rgba(255,255,255,0.92)', fontSize: 16 }}>
+                Afik Yefet
+              </Typography.Text>
+              {screens.md && (
+                <Typography.Text style={{ color: 'rgba(255,255,255,0.58)' }}>
+                  • Full-Stack Developer
+                </Typography.Text>
+              )}
+            </Space>
 
-            <motion.div
-              className="lg:col-span-5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <div className="card-base p-7 sm:p-8">
-                <div className="flex items-center justify-between mb-5">
-                  <div>
-                    <div className="kicker">Status</div>
-                    <div className="text-lg font-semibold text-white/90 mt-1">Shipping reliable systems</div>
-                  </div>
-                  <div className="h-12 w-12 rounded-2xl bg-accent/20 border border-white/10 shadow-glow-md animate-floaty" />
-                </div>
-                <div className="space-y-3 text-sm text-white/70">
-                  <p>Focused on internal tools, automation, and product experiences that feel effortless.</p>
-                  <p className="text-white/60">Scroll down for selected work, stats, and tech stack.</p>
-                </div>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  <Chip className="border-white/15">Clean UX</Chip>
-                  <Chip className="border-white/15">Automation</Chip>
-                  <Chip className="border-white/15">Impact</Chip>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            {screens.md ? (
+              <Menu
+                mode="horizontal"
+                theme="dark"
+                selectable={false}
+                items={sections.map((s) => ({
+                  key: s.key,
+                  icon: s.icon,
+                  label: s.label,
+                  onClick: () => scrollToId(s.key),
+                }))}
+                style={{ background: 'transparent', borderBottom: 0, minWidth: 520, justifyContent: 'flex-end' }}
+              />
+            ) : (
+              <Button type="primary" onClick={() => setMobileOpen(true)}>
+                Menu
+              </Button>
+            )}
+          </Flex>
         </div>
-      </section>
+      </Layout.Header>
 
-      {/* Contact Section */}
-      <Section id="contact" title="Get In Touch" subtitle="Let's connect and collaborate">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {contacts.map((contact, idx) => {
-            const IconComponent = getIcon(contact.icon);
-            return (
-              <motion.a
-                key={contact.name}
-                href={contact.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="card-base p-6 block"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-white/[0.06] border border-white/10 text-white flex-shrink-0">
-                    <IconComponent size={24} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold mb-1 text-white/90">{contact.name}</h3>
-                    <p className="text-sm text-white/60">{contact.description}</p>
-                  </div>
-                </div>
-              </motion.a>
-            );
-          })}
-        </div>
-      </Section>
+      <Drawer
+        title="Navigation"
+        placement="right"
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+      >
+        <Menu
+          mode="inline"
+          items={sections.map((s) => ({
+            key: s.key,
+            icon: s.icon,
+            label: s.label,
+            onClick: () => {
+              setMobileOpen(false);
+              scrollToId(s.key);
+            },
+          }))}
+        />
+      </Drawer>
 
-      {/* Stats Section */}
-      <Section id="stats" title="GitHub & LeetCode Stats" subtitle="My coding activity and achievements">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {/* <StatCard
-            title="GitHub Stats"
-            imageUrl={stats.github.statsUrl}
-            alt="GitHub statistics"
-            delay={0}
-          /> */}
-          <StatCard
-            title="LeetCode Progress"
-            imageUrl={stats.leetcode.cardUrl}
-            alt="LeetCode statistics"
-            delay={0.1}
-          />
-          {/* <StatCard
-            title="Top Languages"
-            imageUrl={stats.github.languagesUrl}
-            alt="Top programming languages"
-            delay={0.2}
-          /> */}
-          <StatCard
-            title="GitHub Streak"
-            imageUrl={stats.github.streakUrl}
-            alt="GitHub contribution streak"
-            delay={0.3}
-          />
-        </div>
-      </Section>
+      <Layout.Content>
+        <div className="hero">
+          <div className="container-max">
+            <Row gutter={[24, 24]} align="middle">
+              <Col xs={24} lg={14}>
+                <Space direction="vertical" size={12} style={{ width: '100%' }}>
+                  <Tag color="cyan" icon={<SafetyCertificateOutlined />}>
+                    High-tech web engineering
+                  </Tag>
+                  <Typography.Title style={{ margin: 0, color: 'rgba(255,255,255,0.95)' }} level={1}>
+                    Afik Yefet
+                  </Typography.Title>
+                  <Typography.Paragraph style={{ margin: 0, color: 'rgba(255,255,255,0.72)', fontSize: 18 }}>
+                    Full-Stack Developer at <b>Agilite</b>
+                    <br />
+                    Building internal tools + products
+                  </Typography.Paragraph>
 
-      {/* About Section */}
-      <Section id="about" title="About" subtitle="A glimpse into who I am and how I work">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {aboutCards.map((card, idx) => (
-            <InfoCard
-              key={card.title}
-              icon="User"
-              title={card.title}
-              description={card.description}
-              delay={idx * 0.1}
-            />
-          ))}
-        </div>
-      </Section>
-
-      {/* Work Section */}
-      <Section id="work" title="Work at Agilite" subtitle="Projects I've built and maintained">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {workProjects.map((project, idx) => (
-            <ProjectCard key={project.title} project={project} delay={idx * 0.1} />
-          ))}
-        </div>
-      </Section>
-
-      {/* Personal Projects Section */}
-      <Section id="projects" title="Selected Projects" subtitle="Personal projects and side work">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {personalProjects.map((project, idx) => (
-            <ProjectCard key={project.title} project={project} delay={idx * 0.1} />
-          ))}
-          <motion.div
-            className="card-base p-6 flex items-center justify-center border-dashed border-2 border-white/15"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-          >
-            <p className="text-white/55 text-center">More projects coming soon...</p>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* Tech Stack Section */}
-      <Section id="tech" title="Tech Stack" subtitle="Technologies I work with">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {techStack.map((category, catIdx) => (
-            <motion.div
-              key={category.category}
-              className="card-base p-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.4, delay: catIdx * 0.1 }}
-            >
-              <h3 className="text-lg font-semibold mb-4 text-white/90">{category.category}</h3>
-              <div className="flex flex-wrap gap-2">
-                {category.items.map((item, itemIdx) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.2, delay: catIdx * 0.1 + itemIdx * 0.05 }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Chip>{item}</Chip>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Education Section */}
-      <Section id="education" title="Education" subtitle="My learning journey">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {education.map((item, idx) => (
-            <InfoCard
-              key={item.degree}
-              icon="GraduationCap"
-              title={item.degree}
-              description={`${item.institution} • ${item.period}${item.description ? ` • ${item.description}` : ''}`}
-              delay={idx * 0.1}
-            />
-          ))}
-        </div>
-      </Section>
-
-      {/* Footer */}
-      <footer className="bg-ink-950 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container-max">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div>
-              <h3 className="font-display text-xl mb-4">
-                <span className="text-gradient animate-shimmer">Afik Yefet</span>
-              </h3>
-              <p className="text-white/70 mb-4">Full-Stack Web Developer</p>
-              <p className="text-sm text-white/50">Built with React + TypeScript</p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Connect</h4>
-              <div className="flex flex-wrap gap-4">
-                {contacts.map((contact) => {
-                  const IconComponent = getIcon(contact.icon);
-                  return (
-                    <a
-                      key={contact.name}
-                      href={contact.url}
+                  <Space wrap>
+                    <Button type="primary" size="large" icon={<RocketOutlined />} onClick={() => scrollToId('projects')}>
+                      Explore Projects
+                    </Button>
+                    <Button size="large" icon={<MailOutlined />} onClick={() => scrollToId('contact')}>
+                      Contact
+                    </Button>
+                    <Button
+                      size="large"
+                      icon={<DownloadOutlined />}
+                      href="/Afik_Yefet_Resume_2026.docx"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-xl bg-white/[0.06] border border-white/10 hover:bg-white/[0.09] transition-colors"
-                      aria-label={contact.name}
                     >
-                      <IconComponent size={20} />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/50">© {new Date().getFullYear()} Afik Yefet. All rights reserved.</p>
-            <a
-              href="/Afik Yefet - Resume 2026.pdf"
-              download
-              className="btn-primary px-4 py-2"
-            >
-              <Download size={16} />
-              Download Resume
-            </a>
+                      Resume
+                    </Button>
+                  </Space>
+                </Space>
+              </Col>
+
+              <Col xs={24} lg={10}>
+                <Descriptions
+                  title={<Typography.Text style={{ color: 'rgba(255,255,255,0.9)' }}>At a glance</Typography.Text>}
+                  column={1}
+                  bordered
+                  size="middle"
+                  styles={{
+                    label: { color: 'rgba(255,255,255,0.70)', background: 'rgba(255,255,255,0.03)' },
+                    content: { color: 'rgba(255,255,255,0.88)', background: 'rgba(5,7,17,0.25)' },
+                  }}
+                >
+                  {topKpis.map((kpi) => (
+                    <Descriptions.Item key={kpi.title} label={kpi.title}>
+                      <Statistic value={kpi.value} valueStyle={{ color: 'rgba(255,255,255,0.92)' }} />
+                    </Descriptions.Item>
+                  ))}
+                </Descriptions>
+              </Col>
+            </Row>
           </div>
         </div>
-      </footer>
-    </div>
+
+        <div id="about" className="section">
+          <div className="container-max">
+            <Typography.Title level={2} style={{ color: 'rgba(255,255,255,0.92)', marginTop: 0 }}>
+              About
+            </Typography.Title>
+            <Typography.Paragraph style={{ color: 'rgba(255,255,255,0.68)' }}>
+              A structured view into how I work and what I optimize for.
+            </Typography.Paragraph>
+
+            <Steps
+              direction={screens.md ? 'horizontal' : 'vertical'}
+              current={aboutCards.length}
+              items={aboutCards.map((c) => ({
+                title: c.title,
+                description: c.description,
+              }))}
+            />
+          </div>
+        </div>
+
+        <div id="work" className="section">
+          <div className="container-max">
+            <Typography.Title level={2} style={{ color: 'rgba(255,255,255,0.92)', marginTop: 0 }}>
+              Work at Agilite
+            </Typography.Title>
+            <Typography.Paragraph style={{ color: 'rgba(255,255,255,0.68)' }}>
+              Projects I’ve built and maintained.
+            </Typography.Paragraph>
+
+            <Collapse
+              accordion
+              items={workProjects.map((p) => ({
+                key: p.title,
+                label: (
+                  <Space wrap>
+                    <Typography.Text style={{ color: 'rgba(255,255,255,0.92)' }}>{p.title}</Typography.Text>
+                    <Tag color="cyan">{p.description}</Tag>
+                    {'impactBadge' in p && p.impactBadge ? <Tag color="geekblue">{p.impactBadge}</Tag> : null}
+                  </Space>
+                ),
+                children: (
+                  <Space direction="vertical" size={12} style={{ width: '100%' }}>
+                    <Divider style={{ margin: '8px 0', borderColor: 'rgba(255,255,255,0.08)' }} />
+                    <List
+                      size="small"
+                      dataSource={p.bullets}
+                      renderItem={(b) => (
+                        <List.Item>
+                          <Space>
+                            <SafetyCertificateOutlined style={{ color: '#22d3ee' }} />
+                            <Typography.Text style={{ color: 'rgba(255,255,255,0.82)' }}>{b}</Typography.Text>
+                          </Space>
+                        </List.Item>
+                      )}
+                    />
+                    <div>
+                      {p.tags.map((t) => (
+                        <Tag key={t} color="default" style={{ marginBottom: 8 }}>
+                          {t}
+                        </Tag>
+                      ))}
+                    </div>
+                  </Space>
+                ),
+              }))}
+            />
+          </div>
+        </div>
+
+        <div id="projects" className="section">
+          <div className="container-max">
+            <Typography.Title level={2} style={{ color: 'rgba(255,255,255,0.92)', marginTop: 0 }}>
+              Selected Projects
+            </Typography.Title>
+            <Typography.Paragraph style={{ color: 'rgba(255,255,255,0.68)' }}>
+              Personal projects and side work.
+            </Typography.Paragraph>
+
+            <Tabs
+              items={[
+                {
+                  key: 'personal',
+                  label: 'Personal',
+                  children: (
+                    <Collapse
+                      items={personalProjects.map((p) => ({
+                        key: p.title,
+                        label: (
+                          <Space wrap>
+                            <Typography.Text style={{ color: 'rgba(255,255,255,0.92)' }}>{p.title}</Typography.Text>
+                            <Tag color="cyan">{p.description}</Tag>
+                          </Space>
+                        ),
+                        children: (
+                          <Space direction="vertical" size={12} style={{ width: '100%' }}>
+                            <List
+                              size="small"
+                              dataSource={p.bullets}
+                              renderItem={(b) => (
+                                <List.Item>
+                                  <Space>
+                                    <RocketOutlined style={{ color: '#22d3ee' }} />
+                                    <Typography.Text style={{ color: 'rgba(255,255,255,0.82)' }}>{b}</Typography.Text>
+                                  </Space>
+                                </List.Item>
+                              )}
+                            />
+                            <div>
+                              {p.tags.map((t) => (
+                                <Tag key={t} style={{ marginBottom: 8 }}>
+                                  {t}
+                                </Tag>
+                              ))}
+                            </div>
+                          </Space>
+                        ),
+                      }))}
+                    />
+                  ),
+                },
+              ]}
+            />
+          </div>
+        </div>
+
+        <div id="tech" className="section">
+          <div className="container-max">
+            <Typography.Title level={2} style={{ color: 'rgba(255,255,255,0.92)', marginTop: 0 }}>
+              Tech Stack
+            </Typography.Title>
+            <Typography.Paragraph style={{ color: 'rgba(255,255,255,0.68)' }}>
+              Organized by domain.
+            </Typography.Paragraph>
+
+            <Collapse
+              items={techStack.map((c) => ({
+                key: c.category,
+                label: (
+                  <Space>
+                    <CodeOutlined />
+                    <Typography.Text style={{ color: 'rgba(255,255,255,0.90)' }}>{c.category}</Typography.Text>
+                    <Tag color="cyan">{c.items.length} items</Tag>
+                  </Space>
+                ),
+                children: (
+                  <Flex wrap="wrap" gap={8}>
+                    {c.items.map((i) => (
+                      <Tag key={i} color="default">
+                        {i}
+                      </Tag>
+                    ))}
+                  </Flex>
+                ),
+              }))}
+            />
+          </div>
+        </div>
+
+        <div id="stats" className="section">
+          <div className="container-max">
+            <Typography.Title level={2} style={{ color: 'rgba(255,255,255,0.92)', marginTop: 0 }}>
+              GitHub & LeetCode Stats
+            </Typography.Title>
+            <Typography.Paragraph style={{ color: 'rgba(255,255,255,0.68)' }}>
+              Live stat cards loaded as images.
+            </Typography.Paragraph>
+
+            <Tabs
+              items={[
+                {
+                  key: 'leetcode',
+                  label: 'LeetCode',
+                  children: (
+                    <Image
+                      src={stats.leetcode.cardUrl}
+                      alt="LeetCode statistics"
+                      style={{ maxWidth: 820, width: '100%' }}
+                    />
+                  ),
+                },
+                {
+                  key: 'github-streak',
+                  label: 'GitHub Streak',
+                  children: (
+                    <Image
+                      src={stats.github.streakUrl}
+                      alt="GitHub streak"
+                      style={{ maxWidth: 820, width: '100%' }}
+                    />
+                  ),
+                },
+              ]}
+            />
+          </div>
+        </div>
+
+        <div id="education" className="section">
+          <div className="container-max">
+            <Typography.Title level={2} style={{ color: 'rgba(255,255,255,0.92)', marginTop: 0 }}>
+              Education
+            </Typography.Title>
+            <Typography.Paragraph style={{ color: 'rgba(255,255,255,0.68)' }}>
+              Timeline view.
+            </Typography.Paragraph>
+
+            <Timeline
+              items={education.map((e) => ({
+                children: (
+                  <Space direction="vertical" size={2}>
+                    <Typography.Text strong style={{ color: 'rgba(255,255,255,0.92)' }}>
+                      {e.degree}
+                    </Typography.Text>
+                    <Typography.Text style={{ color: 'rgba(255,255,255,0.72)' }}>
+                      {e.institution} • {e.period}
+                      {e.description ? ` • ${e.description}` : ''}
+                    </Typography.Text>
+                  </Space>
+                ),
+              }))}
+            />
+          </div>
+        </div>
+
+        <div id="contact" className="section">
+          <div className="container-max">
+            <Typography.Title level={2} style={{ color: 'rgba(255,255,255,0.92)', marginTop: 0 }}>
+              Get In Touch
+            </Typography.Title>
+            <Typography.Paragraph style={{ color: 'rgba(255,255,255,0.68)' }}>
+              Fastest ways to reach me.
+            </Typography.Paragraph>
+
+            <List
+              bordered
+              dataSource={contacts}
+              renderItem={(c) => (
+                <List.Item
+                  actions={[
+                    <Button key="open" type="link" href={c.url} target="_blank" rel="noopener noreferrer">
+                      Open
+                    </Button>,
+                  ]}
+                >
+                  <List.Item.Meta
+                    avatar={<Badge color="cyan" />}
+                    title={
+                      <Space>
+                        {contactIcon(c.name)}
+                        <Typography.Text style={{ color: 'rgba(255,255,255,0.92)' }}>{c.name}</Typography.Text>
+                      </Space>
+                    }
+                    description={<Typography.Text style={{ color: 'rgba(255,255,255,0.65)' }}>{c.description}</Typography.Text>}
+                  />
+                </List.Item>
+              )}
+            />
+          </div>
+        </div>
+      </Layout.Content>
+
+      <Layout.Footer style={{ background: 'transparent', color: 'rgba(255,255,255,0.55)' }}>
+        <div className="container-max">
+          <Flex justify="space-between" align="center" wrap="wrap" gap={12}>
+            <Typography.Text style={{ color: 'rgba(255,255,255,0.55)' }}>
+              © {new Date().getFullYear()} Afik Yefet
+            </Typography.Text>
+            <Space wrap>
+              {contacts.map((c) => (
+                <Button key={c.name} type="link" href={c.url} target="_blank" rel="noopener noreferrer">
+                  {c.name}
+                </Button>
+              ))}
+            </Space>
+          </Flex>
+        </div>
+      </Layout.Footer>
+
+      <FloatButton.BackTop />
+    </Layout>
   );
 }
 

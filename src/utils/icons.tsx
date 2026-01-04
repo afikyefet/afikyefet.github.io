@@ -1,5 +1,7 @@
 import {
   Mail,
+  Phone,
+  Globe,
   Linkedin,
   Github,
   Code,
@@ -12,6 +14,8 @@ import {
 
 const iconMap: Record<string, LucideIcon> = {
   Mail,
+  Phone,
+  Globe,
   Linkedin,
   Github,
   Code,
