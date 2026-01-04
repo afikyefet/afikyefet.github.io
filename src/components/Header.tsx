@@ -35,18 +35,20 @@ export const Header = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-sm'
+          ? 'bg-ink-900/60 backdrop-blur-xl border-b border-white/10'
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="container-max px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <h1 className="text-xl font-bold text-slate-900">Afik Yefet</h1>
-            <span className="hidden sm:inline text-sm text-slate-600">• Full-Stack Developer</span>
+            <h1 className="font-display text-lg sm:text-xl tracking-tight">
+              <span className="text-gradient animate-shimmer">Afik Yefet</span>
+            </h1>
+            <span className="hidden sm:inline text-sm text-white/60">• Full-Stack Developer</span>
           </div>
 
           {/* Desktop Nav */}
@@ -55,7 +57,7 @@ export const Header = () => {
               <button
                 key={item.href}
                 onClick={() => scrollTo(item.href)}
-                className="text-sm font-medium text-slate-700 hover:text-accent transition-colors"
+                className="text-sm font-semibold text-white/70 hover:text-white transition-colors"
               >
                 {item.label}
               </button>
@@ -66,7 +68,7 @@ export const Header = () => {
                 e.preventDefault();
                 scrollTo('#contact');
               }}
-              className="px-4 py-2 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-dark transition-colors"
+              className="btn-ghost px-4 py-2"
             >
               Contact
             </a>
@@ -74,7 +76,7 @@ export const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-slate-700"
+            className="md:hidden p-2 text-white/80"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -85,7 +87,7 @@ export const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden py-4 border-t border-slate-200"
+            className="md:hidden py-4 border-t border-white/10"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -95,7 +97,7 @@ export const Header = () => {
                 <button
                   key={item.href}
                   onClick={() => scrollTo(item.href)}
-                  className="text-left text-sm font-medium text-slate-700 hover:text-accent transition-colors py-2"
+                  className="text-left text-sm font-semibold text-white/75 hover:text-white transition-colors py-2"
                 >
                   {item.label}
                 </button>
@@ -106,7 +108,7 @@ export const Header = () => {
                   e.preventDefault();
                   scrollTo('#contact');
                 }}
-                className="px-4 py-2 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-dark transition-colors text-center"
+                className="btn-ghost px-4 py-2 text-center"
               >
                 Contact
               </a>

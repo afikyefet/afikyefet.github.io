@@ -8,20 +8,114 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 text-slate-900;
-    background-image: 
-      radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.02) 1px, transparent 0);
-    background-size: 40px 40px;
+    @apply bg-ink-900 text-white font-sans antialiased;
+    /* High-tech enterprise: restrained glow + grid + vignette */
+    background-image:
+      radial-gradient(1100px 600px at 18% 12%, rgba(34, 211, 238, 0.18), transparent 55%),
+      radial-gradient(900px 520px at 82% 18%, rgba(96, 165, 250, 0.14), transparent 60%),
+      radial-gradient(900px 700px at 60% 88%, rgba(52, 211, 153, 0.08), transparent 60%),
+      radial-gradient(100% 60% at 50% 100%, rgba(0, 0, 0, 0.70), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00)),
+      linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.62));
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: rgba(167, 139, 250, 0.35);
+  }
+
+  a {
+    @apply underline-offset-4;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(34, 211, 238, 0.75);
+    outline-offset: 3px;
+    border-radius: 10px;
   }
 }
 
 @layer components {
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      90deg,
+      rgba(34, 211, 238, 0.95),
+      rgba(96, 165, 250, 0.95),
+      rgba(34, 211, 238, 0.95)
+    );
+    background-size: 200% 200%;
+  }
+
+  .surface-grid {
+    @apply relative;
+  }
+  .surface-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.22;
+    mask-image: radial-gradient(90% 60% at 50% 0%, black 10%, transparent 65%);
+    pointer-events: none;
+  }
+
   .card-base {
-    @apply bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-sm hover:shadow-md transition-all duration-300;
+    @apply relative rounded-2xl border border-white/10 bg-ink-950/40 backdrop-blur-xl shadow-glow-sm transition-transform duration-300;
+  }
+
+  .card-base::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 1rem;
+    background: linear-gradient(120deg, rgba(34, 211, 238, 0.24), rgba(96, 165, 250, 0.18), rgba(255, 255, 255, 0.06));
+    opacity: 0.45;
+    filter: blur(0.3px);
+    pointer-events: none;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 1px;
+  }
+
+  .card-base::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    background: radial-gradient(700px 240px at 25% 0%, rgba(255,255,255,0.10), transparent 60%);
+    opacity: 0.55;
+    pointer-events: none;
   }
 
   .chip {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20;
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+      bg-white/[0.04] text-white/80 border border-white/10
+      shadow-[0_0_0_1px_rgba(255,255,255,0.03)] backdrop-blur;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-ink-900 hover:bg-accent-light;
+  }
+  .btn-ghost {
+    @apply btn border border-white/15 bg-white/[0.03] text-white hover:bg-white/[0.06];
+  }
+
+  .kicker {
+    @apply text-xs font-semibold tracking-[0.25em] uppercase text-white/55;
   }
 }
 

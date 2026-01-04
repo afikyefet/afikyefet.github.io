@@ -16,12 +16,12 @@ export const InfoCard = ({ icon, title, description, tags = [], delay = 0 }: Inf
   return (
     <Card delay={delay} className="p-6 h-full">
       <div className="flex items-start gap-4">
-        <div className="p-3 rounded-lg bg-accent/10 text-accent flex-shrink-0">
+        <div className="p-3 rounded-xl bg-white/[0.06] border border-white/10 text-white flex-shrink-0 shadow-glow-sm">
           <IconComponent size={24} />
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-semibold mb-2 text-slate-900">{title}</h3>
-          <p className="text-sm text-slate-600 mb-3">{description}</p>
+          <h3 className="text-lg font-semibold mb-2 text-white/90">{title}</h3>
+          <p className="text-sm text-white/65 mb-3">{description}</p>
           {tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {tags.map((tag, idx) => (
