@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, Variants } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform, Variants } from "framer-motion";
 import { CSSProperties, ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right" | "scale" | "blur" | "rotate" | "bounce" | "glow";
@@ -261,19 +261,18 @@ type ParallaxProps = {
 
 export function Parallax({ children, speed = 0.5, className, style }: ParallaxProps) {
   const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, -80 * speed]);
 
   if (reduceMotion) return <div className={className} style={style}>{children}</div>;
 
   return (
     <motion.div
-      initial={{ y: 0 }}
-      whileInView={{ y: 0 }}
-      viewport={{ once: false }}
       style={{
         ...style,
+        y,
         willChange: "transform",
       }}
-      transition={{ type: "tween", ease: "linear" }}
       className={className}
     >
       {children}
