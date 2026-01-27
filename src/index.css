@@ -1,9 +1,41 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+@media (max-width: 576px) {
+  html {
+    scroll-padding-top: 60px;
+  }
+}
+
+/* Ensure Ant Design Layout doesn't add extra spacing */
+.ant-layout,
+.ant-layout-header,
+.ant-layout-content,
+.ant-layout-footer {
+  background: transparent !important;
+}
+
+/* Fix header to stay at the very top */
+.ant-layout-header {
+  padding: 0 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  transform: none !important;
 }
 
 body {
-  margin: 0;
   background:
     radial-gradient(ellipse 1800px 1200px at 8% 12%, rgba(34, 211, 238, 0.15), transparent 65%),
     radial-gradient(ellipse 2000px 1400px at 92% 8%, rgba(96, 165, 250, 0.12), transparent 68%),
@@ -13,9 +45,12 @@ body {
     radial-gradient(ellipse 180% 140% at 50% 50%, rgba(0, 0, 0, 0.85), transparent 75%),
     linear-gradient(180deg, #020308 0%, #010204 50%, #020308 100%);
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   position: relative;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -54,20 +89,42 @@ body::before {
 .container-max {
   max-width: 1120px;
   margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (max-width: 576px) {
+  .container-max {
+    padding: 0 12px;
+  }
 }
 
 .section {
   padding: 72px 16px;
+  scroll-margin-top: 72px;
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding: 48px 12px;
+    scroll-margin-top: 60px;
+  }
 }
 
 .hero {
   padding: 104px 16px 32px;
 }
 
+@media (max-width: 576px) {
+  .hero {
+    padding: 80px 12px 24px;
+  }
+}
+
 :root {
   --ui-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ui-dur: 220ms;
   --ui-dur-slow: 360ms;
+  --radius-lg: 16px;
 }
 
 a,
@@ -95,4 +152,348 @@ button,
     opacity var(--ui-dur) var(--ui-ease);
 }
 
+/* Mobile text improvements */
+@media (max-width: 576px) {
+  /* Ensure text wraps properly */
+  .ant-typography {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Prevent text overflow */
+  * {
+    max-width: 100%;
+  }
+  
+  /* Improve readability for small screens */
+  .ant-list-item {
+    padding: 14px 12px !important;
+    border-radius: 8px !important;
+  }
+  
+  .ant-list-item:hover {
+    background: rgba(255,255,255,0.05) !important;
+    transform: translateX(2px);
+  }
+  
+  .ant-collapse {
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  .ant-collapse-item {
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+    background: rgba(255,255,255,0.02) !important;
+    overflow: hidden;
+  }
+  
+  .ant-collapse-header {
+    padding: 16px 12px !important;
+    font-size: 14px !important;
+    border-radius: 12px !important;
+  }
+  
+  .ant-collapse-content {
+    border-radius: 0 0 12px 12px !important;
+  }
+  
+  .ant-collapse-content-box {
+    padding: 12px !important;
+  }
+  
+  .ant-descriptions-item-label,
+  .ant-descriptions-item-content {
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+  }
+  
+  /* Better button spacing on mobile */
+  .ant-btn {
+    min-height: 40px;
+    padding: 6px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .ant-btn-primary {
+    box-shadow: 0 2px 8px rgba(34, 211, 238, 0.25) !important;
+  }
+  
+  .ant-btn-primary:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(34, 211, 238, 0.3) !important;
+  }
+  
+  /* Improve tag readability */
+  .ant-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    margin: 3px;
+    line-height: 1.5;
+    border-radius: 4px;
+  }
+  
+  /* Timeline improvements */
+  .ant-timeline-item-content {
+    font-size: 14px;
+    line-height: 1.7;
+    padding-left: 8px;
+  }
+  
+  .ant-timeline-item {
+    padding-bottom: 20px;
+  }
+  
+  /* Steps component mobile */
+  .ant-steps {
+    padding: 16px 0;
+  }
+  
+  .ant-steps-item-title {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+  
+  .ant-steps-item-description {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  
+  /* Menu improvements */
+  .ant-menu-item {
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 4px 0;
+    transition: all 0.2s ease;
+  }
+  
+  .ant-menu-item:hover {
+    background: rgba(255,255,255,0.08) !important;
+  }
+  
+  /* Drawer improvements */
+  .ant-drawer {
+    border-radius: 16px 0 0 16px;
+  }
+  
+  .ant-drawer-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .ant-drawer-body {
+    padding: 16px;
+  }
+  
+  /* Tabs improvements */
+  .ant-tabs {
+    margin-top: 8px;
+  }
+  
+  .ant-tabs-tab {
+    font-size: 14px;
+    padding: 10px 16px;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .ant-tabs-content-holder {
+    padding-top: 16px;
+  }
+  
+  /* Space component - reduce gaps on mobile */
+  .ant-space {
+    gap: 10px !important;
+  }
 
+  /* Tabs can scroll horizontally instead of wrapping */
+  .ant-tabs-nav {
+    margin: 0 -12px;
+    padding: 0 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ant-tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .ant-tabs-nav-list {
+    width: max-content;
+  }
+  
+  /* Ensure long URLs and text don't break layout */
+  a, button {
+    word-break: break-word;
+  }
+  
+  /* Image improvements */
+.ant-image {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ant-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Card-like visual improvements */
+.ant-descriptions {
+  border-radius: 12px;
+}
+.ant-descriptions-view table {
+  width: 100%;
+}
+  
+  /* Better visual hierarchy */
+  .ant-typography h1,
+  .ant-typography h2,
+  .ant-typography h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  /* Float button improvements */
+  .ant-float-btn {
+    width: 44px !important;
+    height: 44px !important;
+    right: 16px !important;
+    bottom: 24px !important;
+  }
+  
+  /* Better focus states for accessibility */
+  .ant-btn:focus-visible,
+  .ant-menu-item:focus-visible {
+    outline: 2px solid rgba(34, 211, 238, 0.6);
+    outline-offset: 2px;
+  }
+  
+  /* Improved list item interactions */
+  .ant-list-item-action {
+    margin-left: 12px;
+  }
+  
+  /* Better spacing in sections */
+  .section {
+    scroll-margin-top: 60px;
+  }
+  
+  /* Footer improvements */
+  .ant-layout-footer {
+    text-align: center;
+  }
+  
+  /* Improved list bullets spacing */
+  .ant-list-item-meta {
+    margin-bottom: 0;
+  }
+  
+  /* Better visual feedback on touch */
+  .ant-btn:active,
+  .ant-menu-item:active {
+    transform: scale(0.97);
+  }
+  
+  /* Enhanced card shadows for depth */
+  .ant-collapse-item {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  
+/* Better stat card presentation */
+.ant-statistic-content {
+  font-weight: 600;
+}
+
+/* Improved divider visibility */
+  .ant-divider {
+    margin: 16px 0;
+    border-color: rgba(255,255,255,0.1);
+  }
+  
+/* Better table/card borders */
+.ant-descriptions-bordered .ant-descriptions-item-label {
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Smooth transitions for all interactive elements */
+.ant-btn,
+.ant-menu-item,
+.ant-collapse-header,
+.ant-list-item {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Media: keep images/videos inside the viewport */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Global word-wrap helpers to stop overflow */
+.ant-tabs-tab-btn,
+.ant-collapse-header,
+.ant-collapse-content-box,
+.ant-list-item-meta-title,
+.ant-descriptions-item-content,
+.ant-descriptions-item-label,
+.ant-tag {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+}
+
+/* Safe area support for devices with notches (iPhone X+) */
+@supports (padding: max(0px)) {
+  .ant-layout-header {
+    padding-left: max(12px, env(safe-area-inset-left)) !important;
+    padding-right: max(12px, env(safe-area-inset-right)) !important;
+  }
+
+  .container-max {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  @media (max-width: 576px) {
+    .container-max {
+      padding-left: max(12px, env(safe-area-inset-left));
+      padding-right: max(12px, env(safe-area-inset-right));
+    }
+  }
+
+  .ant-layout-footer {
+    padding-bottom: max(40px, calc(40px + env(safe-area-inset-bottom))) !important;
+  }
+}
+
+/* Ensure touch targets are at least 44px for accessibility */
+@media (pointer: coarse) {
+  .ant-btn,
+  .ant-menu-item,
+  .ant-tabs-tab,
+  .ant-collapse-header {
+    min-height: 44px;
+  }
+
+  .ant-list-item {
+    min-height: 56px;
+  }
+}
+
+/* Prevent pull-to-refresh interference on iOS */
+body {
+  overscroll-behavior-y: none;
+}
+
+/* Improve text rendering on all devices */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
