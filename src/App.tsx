@@ -1,28 +1,3 @@
-import { useMemo, useState } from 'react';
-import {
-  Badge,
-  Button,
-  Collapse,
-  Descriptions,
-  Divider,
-  Drawer,
-  Flex,
-  FloatButton,
-  Layout,
-  List,
-  Menu,
-  Row,
-  Col,
-  Space,
-  Statistic,
-  Steps,
-  Tabs,
-  Tag,
-  Timeline,
-  Typography,
-  Image,
-  Grid,
-} from 'antd';
 import {
   AppstoreOutlined,
   BarChartOutlined,
@@ -37,8 +12,33 @@ import {
   RocketOutlined,
   SafetyCertificateOutlined,
 } from '@ant-design/icons';
-import { aboutCards, contacts, education, personalProjects, stats, techStack, workProjects } from './data/profile';
+import {
+  Badge,
+  Button,
+  Col,
+  Collapse,
+  Descriptions,
+  Divider,
+  Drawer,
+  Flex,
+  FloatButton,
+  Grid,
+  Image,
+  Layout,
+  List,
+  Menu,
+  Row,
+  Space,
+  Statistic,
+  Steps,
+  Tabs,
+  Tag,
+  Timeline,
+  Typography,
+} from 'antd';
+import { useMemo, useState } from 'react';
 import { Reveal, Stagger } from './components/Reveal';
+import { aboutCards, contacts, education, personalProjects, stats, techStack, workProjects } from './data/profile';
 
 function App() {
   const { useBreakpoint } = Grid;
@@ -131,11 +131,11 @@ function App() {
                 style={{ background: 'transparent', borderBottom: 0, minWidth: 520, justifyContent: 'flex-end' }}
               />
             ) : (
-              <Button 
-                type="primary" 
+              <Button
+                type="primary"
                 onClick={() => setMobileOpen(true)}
                 size={screens.xs ? "middle" : "large"}
-                style={{ 
+                style={{
                   borderRadius: 8,
                   fontWeight: 500,
                   boxShadow: '0 2px 8px rgba(34, 211, 238, 0.2)'
@@ -160,7 +160,7 @@ function App() {
         width={280}
         styles={{
           body: { padding: '16px 0' },
-          header: { 
+          header: {
             padding: '16px 24px',
             borderBottom: '1px solid rgba(255,255,255,0.08)'
           }
@@ -177,7 +177,7 @@ function App() {
               scrollToId(s.key);
             },
           }))}
-          style={{ 
+          style={{
             background: 'transparent',
             border: 'none'
           }}
@@ -191,102 +191,102 @@ function App() {
               <Col xs={24} lg={14}>
                 <Reveal direction="blur" distance={50}>
                   <Space direction="vertical" size={screens.xs ? 16 : 20} style={{ width: '100%' }}>
-                  <Tag 
-                    color="cyan" 
-                    icon={<SafetyCertificateOutlined />}
-                    style={{ 
-                      fontSize: screens.xs ? 12 : 13,
-                      padding: screens.xs ? '4px 12px' : '6px 16px',
-                      borderRadius: 6,
-                      border: '1px solid rgba(34, 211, 238, 0.3)',
-                      background: 'rgba(34, 211, 238, 0.1)'
-                    }}
-                  >
-                    High-tech web engineering
-                  </Tag>
-                  <Typography.Title 
-                    style={{ 
-                      margin: 0, 
-                      color: 'rgba(255,255,255,0.95)',
-                      fontSize: screens.xs ? '2.25rem' : screens.sm ? '2.75rem' : '3rem',
-                      lineHeight: 1.15,
-                      fontWeight: 700,
-                      letterSpacing: screens.xs ? '-0.02em' : '-0.03em'
-                    }} 
-                    level={1}
-                  >
-                    Afik Yefet
-                  </Typography.Title>
-                  <Typography.Paragraph 
-                    style={{ 
-                      margin: 0, 
-                      color: 'rgba(255,255,255,0.75)', 
-                      fontSize: screens.xs ? 15 : screens.sm ? 17 : 18,
-                      lineHeight: 1.65,
-                      maxWidth: screens.xs ? '100%' : '90%'
-                    }}
-                  >
-                    Full-Stack Developer at <b style={{ color: 'rgba(255,255,255,0.9)' }}>Agilite</b>
-                    <br />
-                    Building internal tools + products
-                  </Typography.Paragraph>
+                    <Tag
+                      color="cyan"
+                      icon={<SafetyCertificateOutlined />}
+                      style={{
+                        fontSize: screens.xs ? 12 : 13,
+                        padding: screens.xs ? '4px 12px' : '6px 16px',
+                        borderRadius: 6,
+                        border: '1px solid rgba(34, 211, 238, 0.3)',
+                        background: 'rgba(34, 211, 238, 0.1)'
+                      }}
+                    >
+                      High-tech web engineering
+                    </Tag>
+                    <Typography.Title
+                      style={{
+                        margin: 0,
+                        color: 'rgba(255,255,255,0.95)',
+                        fontSize: screens.xs ? '2.25rem' : screens.sm ? '2.75rem' : '3rem',
+                        lineHeight: 1.15,
+                        fontWeight: 700,
+                        letterSpacing: screens.xs ? '-0.02em' : '-0.03em'
+                      }}
+                      level={1}
+                    >
+                      Afik Yefet
+                    </Typography.Title>
+                    <Typography.Paragraph
+                      style={{
+                        margin: 0,
+                        color: 'rgba(255,255,255,0.75)',
+                        fontSize: screens.xs ? 15 : screens.sm ? 17 : 18,
+                        lineHeight: 1.65,
+                        maxWidth: screens.xs ? '100%' : '90%'
+                      }}
+                    >
+                      Full-Stack Developer at <b style={{ color: 'rgba(255,255,255,0.9)' }}>Agilite</b>
+                      <br />
+                      Building internal tools + products
+                    </Typography.Paragraph>
 
-                  <Space 
-                    wrap 
-                    size={screens.xs ? 10 : 12}
-                    style={{ 
-                      width: '100%',
-                      marginTop: screens.xs ? 8 : 0
-                    }}
-                  >
-                    <Button 
-                      type="primary" 
-                      size={screens.xs ? "middle" : "large"} 
-                      icon={<RocketOutlined />} 
-                      onClick={() => scrollToId('projects')}
-                      style={{ 
-                        fontSize: screens.xs ? 14 : undefined,
-                        height: screens.xs ? 40 : undefined,
-                        borderRadius: 8,
-                        fontWeight: 500,
-                        boxShadow: screens.xs ? '0 2px 8px rgba(34, 211, 238, 0.25)' : '0 4px 12px rgba(34, 211, 238, 0.3)'
+                    <Space
+                      wrap
+                      size={screens.xs ? 10 : 12}
+                      style={{
+                        width: '100%',
+                        marginTop: screens.xs ? 8 : 0
                       }}
                     >
-                      Explore Projects
-                    </Button>
-                    <Button 
-                      size={screens.xs ? "middle" : "large"} 
-                      icon={<MailOutlined />} 
-                      onClick={() => scrollToId('contact')}
-                      style={{ 
-                        fontSize: screens.xs ? 14 : undefined,
-                        height: screens.xs ? 40 : undefined,
-                        borderRadius: 8,
-                        fontWeight: 500,
-                        borderColor: 'rgba(255,255,255,0.2)',
-                        background: 'rgba(255,255,255,0.05)'
-                      }}
-                    >
-                      Contact
-                    </Button>
-                    <Button
-                      size={screens.xs ? "middle" : "large"}
-                      icon={<DownloadOutlined />}
-                      href="/Afik_Yefet_Resume_2026.docx"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ 
-                        fontSize: screens.xs ? 14 : undefined,
-                        height: screens.xs ? 40 : undefined,
-                        borderRadius: 8,
-                        fontWeight: 500,
-                        borderColor: 'rgba(255,255,255,0.2)',
-                        background: 'rgba(255,255,255,0.05)'
-                      }}
-                    >
-                      Resume
-                    </Button>
-                  </Space>
+                      <Button
+                        type="primary"
+                        size={screens.xs ? "middle" : "large"}
+                        icon={<RocketOutlined />}
+                        onClick={() => scrollToId('projects')}
+                        style={{
+                          fontSize: screens.xs ? 14 : undefined,
+                          height: screens.xs ? 40 : undefined,
+                          borderRadius: 8,
+                          fontWeight: 500,
+                          boxShadow: screens.xs ? '0 2px 8px rgba(34, 211, 238, 0.25)' : '0 4px 12px rgba(34, 211, 238, 0.3)'
+                        }}
+                      >
+                        Explore Projects
+                      </Button>
+                      <Button
+                        size={screens.xs ? "middle" : "large"}
+                        icon={<MailOutlined />}
+                        onClick={() => scrollToId('contact')}
+                        style={{
+                          fontSize: screens.xs ? 14 : undefined,
+                          height: screens.xs ? 40 : undefined,
+                          borderRadius: 8,
+                          fontWeight: 500,
+                          borderColor: 'rgba(255,255,255,0.2)',
+                          background: 'rgba(255,255,255,0.05)'
+                        }}
+                      >
+                        Contact
+                      </Button>
+                      <Button
+                        size={screens.xs ? "middle" : "large"}
+                        icon={<DownloadOutlined />}
+                        href="/Afik_Yefet_CV_2026.docx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          fontSize: screens.xs ? 14 : undefined,
+                          height: screens.xs ? 40 : undefined,
+                          borderRadius: 8,
+                          fontWeight: 500,
+                          borderColor: 'rgba(255,255,255,0.2)',
+                          background: 'rgba(255,255,255,0.05)'
+                        }}
+                      >
+                        Resume
+                      </Button>
+                    </Space>
                   </Space>
                 </Reveal>
               </Col>
@@ -294,69 +294,69 @@ function App() {
               <Col xs={24} lg={10}>
                 <Reveal direction="scale" delay={0.2}>
                   <div style={{
-                  borderRadius: screens.xs ? 12 : 16,
-                  overflow: 'hidden',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  background: 'rgba(5,7,17,0.4)',
-                  backdropFilter: 'blur(10px)',
-                  boxShadow: screens.xs ? '0 4px 20px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.4)'
-                }}>
-                  <Descriptions
-                    title={
-                      <Typography.Text 
-                        strong
-                        style={{ 
-                          color: 'rgba(255,255,255,0.95)',
-                          fontSize: screens.xs ? 15 : 16,
-                          display: 'block',
-                          paddingTop: screens.xs ? 16 : 20,
-                          paddingLeft: screens.xs ? 16 : 20,
-                          paddingBottom: screens.xs ? 8 : 12,
-                          marginBottom: 0
-                        }}
-                      >
-                        At a glance
-                      </Typography.Text>
-                    }
-                    column={1}
-                    bordered
-                    size={screens.xs ? "small" : "middle"}
-                    styles={{
-                      header: {
-                        padding: 0,
-                        marginBottom: 0
-                      },
-                      label: { 
-                        color: 'rgba(255,255,255,0.70)', 
-                        background: 'rgba(255,255,255,0.05)',
-                        fontSize: screens.xs ? 12 : 13,
-                        fontWeight: 500,
-                        padding: screens.xs ? '10px 12px' : '12px 16px',
-                        paddingLeft: screens.xs ? 16 : 20
-                      },
-                      content: { 
-                        color: 'rgba(255,255,255,0.92)', 
-                        background: 'rgba(5,7,17,0.3)',
-                        fontSize: screens.xs ? 14 : 16,
-                        padding: screens.xs ? '10px 12px' : '12px 16px',
-                        paddingRight: screens.xs ? 16 : 20
-                      },
-                    }}
-                  >
-                    {topKpis.map((kpi) => (
-                      <Descriptions.Item key={kpi.title} label={kpi.title}>
-                        <Statistic 
-                          value={kpi.value} 
-                          valueStyle={{ 
+                    borderRadius: screens.xs ? 12 : 16,
+                    overflow: 'hidden',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: 'rgba(5,7,17,0.4)',
+                    backdropFilter: 'blur(10px)',
+                    boxShadow: screens.xs ? '0 4px 20px rgba(0,0,0,0.3)' : '0 8px 32px rgba(0,0,0,0.4)'
+                  }}>
+                    <Descriptions
+                      title={
+                        <Typography.Text
+                          strong
+                          style={{
                             color: 'rgba(255,255,255,0.95)',
-                            fontSize: screens.xs ? 20 : 24,
-                            fontWeight: 600
-                          }} 
-                        />
-                      </Descriptions.Item>
-                    ))}
-                  </Descriptions>
-                </div>
+                            fontSize: screens.xs ? 15 : 16,
+                            display: 'block',
+                            paddingTop: screens.xs ? 16 : 20,
+                            paddingLeft: screens.xs ? 16 : 20,
+                            paddingBottom: screens.xs ? 8 : 12,
+                            marginBottom: 0
+                          }}
+                        >
+                          At a glance
+                        </Typography.Text>
+                      }
+                      column={1}
+                      bordered
+                      size={screens.xs ? "small" : "middle"}
+                      styles={{
+                        header: {
+                          padding: 0,
+                          marginBottom: 0
+                        },
+                        label: {
+                          color: 'rgba(255,255,255,0.70)',
+                          background: 'rgba(255,255,255,0.05)',
+                          fontSize: screens.xs ? 12 : 13,
+                          fontWeight: 500,
+                          padding: screens.xs ? '10px 12px' : '12px 16px',
+                          paddingLeft: screens.xs ? 16 : 20
+                        },
+                        content: {
+                          color: 'rgba(255,255,255,0.92)',
+                          background: 'rgba(5,7,17,0.3)',
+                          fontSize: screens.xs ? 14 : 16,
+                          padding: screens.xs ? '10px 12px' : '12px 16px',
+                          paddingRight: screens.xs ? 16 : 20
+                        },
+                      }}
+                    >
+                      {topKpis.map((kpi) => (
+                        <Descriptions.Item key={kpi.title} label={kpi.title}>
+                          <Statistic
+                            value={kpi.value}
+                            valueStyle={{
+                              color: 'rgba(255,255,255,0.95)',
+                              fontSize: screens.xs ? 20 : 24,
+                              fontWeight: 600
+                            }}
+                          />
+                        </Descriptions.Item>
+                      ))}
+                    </Descriptions>
+                  </div>
                 </Reveal>
               </Col>
             </Row>
@@ -367,18 +367,18 @@ function App() {
           <div className="container-max">
             <Reveal direction="blur" delay={0.1}>
               <Space direction="vertical" size={8} style={{ width: '100%' }}>
-                <Typography.Title 
-                  level={2} 
-                  style={{ 
-                    color: 'rgba(255,255,255,0.92)', 
+                <Typography.Title
+                  level={2}
+                  style={{
+                    color: 'rgba(255,255,255,0.92)',
                     marginTop: 0,
                     fontSize: screens.xs ? '1.5rem' : screens.sm ? '1.75rem' : '2rem'
                   }}
                 >
                   About
                 </Typography.Title>
-                <Typography.Paragraph 
-                  style={{ 
+                <Typography.Paragraph
+                  style={{
                     color: 'rgba(255,255,255,0.68)',
                     fontSize: screens.xs ? 14 : 16,
                     lineHeight: 1.6
@@ -436,9 +436,9 @@ function App() {
                   label: (
                     <Stagger delay={0.04}>
                       <Space wrap size={screens.xs ? 6 : 8} style={{ width: '100%' }}>
-                        <Typography.Text 
+                        <Typography.Text
                           strong
-                          style={{ 
+                          style={{
                             color: 'rgba(255,255,255,0.95)',
                             fontSize: screens.xs ? 14 : 15,
                             flex: 1
@@ -446,9 +446,9 @@ function App() {
                         >
                           {p.title}
                         </Typography.Text>
-                        <Tag 
-                          color="cyan" 
-                          style={{ 
+                        <Tag
+                          color="cyan"
+                          style={{
                             fontSize: screens.xs ? 11 : 12,
                             borderRadius: 4,
                             border: '1px solid rgba(34, 211, 238, 0.3)',
@@ -460,9 +460,9 @@ function App() {
                           {p.description}
                         </Tag>
                         {'impactBadge' in p && p.impactBadge ? (
-                          <Tag 
-                            color="geekblue" 
-                            style={{ 
+                          <Tag
+                            color="geekblue"
+                            style={{
                               fontSize: screens.xs ? 11 : 12,
                               borderRadius: 4
                             }}
@@ -484,8 +484,8 @@ function App() {
                             <List.Item>
                               <Space size={screens.xs ? 8 : 12}>
                                 <SafetyCertificateOutlined style={{ color: '#22d3ee', fontSize: screens.xs ? 14 : 16 }} />
-                                <Typography.Text 
-                                  style={{ 
+                                <Typography.Text
+                                  style={{
                                     color: 'rgba(255,255,255,0.82)',
                                     fontSize: screens.xs ? 13 : 14,
                                     lineHeight: 1.6
@@ -499,22 +499,22 @@ function App() {
                         />
                         <div style={{ marginTop: screens.xs ? 8 : 12 }}>
                           {p.tags.map((t) => (
-                        <Tag 
-                          key={t} 
-                          color="default" 
-                          style={{ 
-                            marginBottom: screens.xs ? 6 : 8,
-                            marginRight: screens.xs ? 6 : 8,
-                            fontSize: screens.xs ? 11 : 12,
-                            borderRadius: 4,
-                            padding: screens.xs ? '2px 8px' : '4px 10px',
-                            maxWidth: '100%',
-                            whiteSpace: 'normal',
-                            wordBreak: 'break-word'
-                          }}
-                        >
-                          {t}
-                        </Tag>
+                            <Tag
+                              key={t}
+                              color="default"
+                              style={{
+                                marginBottom: screens.xs ? 6 : 8,
+                                marginRight: screens.xs ? 6 : 8,
+                                fontSize: screens.xs ? 11 : 12,
+                                borderRadius: 4,
+                                padding: screens.xs ? '2px 8px' : '4px 10px',
+                                maxWidth: '100%',
+                                whiteSpace: 'normal',
+                                wordBreak: 'break-word'
+                              }}
+                            >
+                              {t}
+                            </Tag>
                           ))}
                         </div>
                       </Space>
@@ -526,7 +526,7 @@ function App() {
           </div>
         </div>
 
-                <div id="projects" className="section">
+        <div id="projects" className="section">
           <div className="container-max">
             <Reveal direction="right" distance={60}>
               <Space direction="vertical" size={8} style={{ width: '100%' }}>
@@ -565,31 +565,31 @@ function App() {
                           label: (
                             <Stagger delay={0.04}>
                               <Space wrap size={screens.xs ? 6 : 8} style={{ width: '100%' }}>
-                            <Typography.Text 
-                              strong
-                              style={{ 
-                                color: 'rgba(255,255,255,0.95)',
-                                fontSize: screens.xs ? 14 : 15,
-                                flex: 1,
-                                minWidth: 0,
-                                wordBreak: 'break-word'
-                              }}
-                            >
-                              {p.title}
-                            </Typography.Text>
-                            <Tag 
-                              color="cyan" 
-                              style={{ 
-                                fontSize: screens.xs ? 11 : 12,
-                                borderRadius: 4,
-                                border: '1px solid rgba(34, 211, 238, 0.3)',
-                                maxWidth: '100%',
-                                whiteSpace: 'normal',
-                                wordBreak: 'break-word'
-                              }}
-                            >
-                              {p.description}
-                            </Tag>
+                                <Typography.Text
+                                  strong
+                                  style={{
+                                    color: 'rgba(255,255,255,0.95)',
+                                    fontSize: screens.xs ? 14 : 15,
+                                    flex: 1,
+                                    minWidth: 0,
+                                    wordBreak: 'break-word'
+                                  }}
+                                >
+                                  {p.title}
+                                </Typography.Text>
+                                <Tag
+                                  color="cyan"
+                                  style={{
+                                    fontSize: screens.xs ? 11 : 12,
+                                    borderRadius: 4,
+                                    border: '1px solid rgba(34, 211, 238, 0.3)',
+                                    maxWidth: '100%',
+                                    whiteSpace: 'normal',
+                                    wordBreak: 'break-word'
+                                  }}
+                                >
+                                  {p.description}
+                                </Tag>
                               </Space>
                             </Stagger>
                           ),
@@ -603,8 +603,8 @@ function App() {
                                     <List.Item>
                                       <Space size={screens.xs ? 8 : 12}>
                                         <RocketOutlined style={{ color: '#22d3ee', fontSize: screens.xs ? 14 : 16 }} />
-                                        <Typography.Text 
-                                          style={{ 
+                                        <Typography.Text
+                                          style={{
                                             color: 'rgba(255,255,255,0.82)',
                                             fontSize: screens.xs ? 13 : 14,
                                             lineHeight: 1.6
@@ -618,9 +618,9 @@ function App() {
                                 />
                                 <div>
                                   {p.tags.map((t) => (
-                                    <Tag 
-                                      key={t} 
-                                      style={{ 
+                                    <Tag
+                                      key={t}
+                                      style={{
                                         marginBottom: 8,
                                         maxWidth: '100%',
                                         whiteSpace: 'normal',
@@ -644,7 +644,7 @@ function App() {
           </div>
         </div>
 
-                <div id="tech" className="section">
+        <div id="tech" className="section">
           <div className="container-max">
             <Reveal direction="rotate">
               <Space direction="vertical" size={8} style={{ width: '100%' }}>
@@ -678,8 +678,8 @@ function App() {
                     <Stagger delay={0.04}>
                       <Space size={screens.xs ? 6 : 8} style={{ width: '100%', flexWrap: 'wrap' }}>
                         <CodeOutlined style={{ fontSize: screens.xs ? 14 : 16 }} />
-                        <Typography.Text 
-                          style={{ 
+                        <Typography.Text
+                          style={{
                             color: 'rgba(255,255,255,0.90)',
                             fontSize: screens.xs ? 13 : 14,
                             flex: 1
@@ -697,10 +697,10 @@ function App() {
                     <Stagger delay={0.04}>
                       <Flex wrap="wrap" gap={8}>
                         {c.items.map((i) => (
-                          <Tag 
-                            key={i} 
-                            color="default" 
-                            style={{ 
+                          <Tag
+                            key={i}
+                            color="default"
+                            style={{
                               fontSize: screens.xs ? 11 : 12,
                               borderRadius: 4,
                               padding: screens.xs ? '2px 8px' : '4px 10px',
@@ -719,7 +719,7 @@ function App() {
           </div>
         </div>
 
-                <div id="stats" className="section">
+        <div id="stats" className="section">
           <div className="container-max">
             <Reveal direction="blur">
               <Space direction="vertical" size={8} style={{ width: '100%' }}>
@@ -774,8 +774,8 @@ function App() {
                         <Image
                           src={stats.github.streakUrl}
                           alt="GitHub streak"
-                          style={{ 
-                            maxWidth: 820, 
+                          style={{
+                            maxWidth: 820,
                             width: '100%',
                             borderRadius: screens.xs ? 12 : 16,
                             overflow: 'hidden'
@@ -790,7 +790,7 @@ function App() {
           </div>
         </div>
 
-                <div id="education" className="section">
+        <div id="education" className="section">
           <div className="container-max">
             <Reveal direction="left" distance={50}>
               <Space direction="vertical" size={8} style={{ width: '100%' }}>
@@ -821,17 +821,17 @@ function App() {
                 items={education.map((e) => ({
                   children: (
                     <Stagger delay={0.05}>
-                      <Space 
-                        direction="vertical" 
+                      <Space
+                        direction="vertical"
                         size={screens.xs ? 4 : 6}
-                        style={{ 
+                        style={{
                           width: '100%',
                           maxWidth: '100%'
                         }}
                       >
-                        <Typography.Text 
-                          strong 
-                          style={{ 
+                        <Typography.Text
+                          strong
+                          style={{
                             color: 'rgba(255,255,255,0.92)',
                             fontSize: screens.xs ? 14 : 15,
                             lineHeight: 1.5,
@@ -842,8 +842,8 @@ function App() {
                         >
                           {e.degree}
                         </Typography.Text>
-                        <Typography.Text 
-                          style={{ 
+                        <Typography.Text
+                          style={{
                             color: 'rgba(255,255,255,0.72)',
                             fontSize: screens.xs ? 12 : 13,
                             lineHeight: 1.6,
@@ -864,7 +864,7 @@ function App() {
           </div>
         </div>
 
-                <div id="contact" className="section">
+        <div id="contact" className="section">
           <div className="container-max">
             <Reveal direction="glow">
               <Space direction="vertical" size={8} style={{ width: '100%' }}>
@@ -904,13 +904,13 @@ function App() {
                       transition: 'all 0.2s ease'
                     }}
                     actions={[
-                      <Button 
-                        key="open" 
-                        type="link" 
-                        href={c.url} 
-                        target="_blank" 
+                      <Button
+                        key="open"
+                        type="link"
+                        href={c.url}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        style={{ 
+                        style={{
                           fontSize: screens.xs ? 13 : 14,
                           fontWeight: 500,
                           color: 'rgba(34, 211, 238, 0.9)'
@@ -922,12 +922,12 @@ function App() {
                   >
                     <List.Item.Meta
                       avatar={
-                        <Badge 
-                          color="cyan" 
-                          style={{ 
-                            width: screens.xs ? 8 : 10, 
-                            height: screens.xs ? 8 : 10 
-                          }} 
+                        <Badge
+                          color="cyan"
+                          style={{
+                            width: screens.xs ? 8 : 10,
+                            height: screens.xs ? 8 : 10
+                          }}
                         />
                       }
                       title={
@@ -935,9 +935,9 @@ function App() {
                           <span style={{ fontSize: screens.xs ? 16 : 18 }}>
                             {contactIcon(c.name)}
                           </span>
-                          <Typography.Text 
+                          <Typography.Text
                             strong
-                            style={{ 
+                            style={{
                               color: 'rgba(255,255,255,0.95)',
                               fontSize: screens.xs ? 15 : 16
                             }}
@@ -947,8 +947,8 @@ function App() {
                         </Space>
                       }
                       description={
-                        <Typography.Text 
-                          style={{ 
+                        <Typography.Text
+                          style={{
                             color: 'rgba(255,255,255,0.7)',
                             fontSize: screens.xs ? 13 : 14,
                             marginTop: screens.xs ? 4 : 6
@@ -968,8 +968,8 @@ function App() {
       </Layout.Content>
 
       <Layout.Footer
-        style={{ 
-          background: 'transparent', 
+        style={{
+          background: 'transparent',
           color: 'rgba(255,255,255,0.55)',
           padding: screens.xs ? '32px 16px' : '40px 16px',
           borderTop: '1px solid rgba(255,255,255,0.08)',
@@ -977,34 +977,34 @@ function App() {
         }}
       >
         <div className="container-max">
-          <Flex 
-            justify="space-between" 
-            align={screens.xs ? "flex-start" : "center"} 
-            wrap="wrap" 
+          <Flex
+            justify="space-between"
+            align={screens.xs ? "flex-start" : "center"}
+            wrap="wrap"
             gap={screens.xs ? 16 : 12}
             vertical={screens.xs}
           >
-            <Typography.Text 
-              style={{ 
+            <Typography.Text
+              style={{
                 color: 'rgba(255,255,255,0.6)',
                 fontSize: screens.xs ? 13 : 14
               }}
             >
               © {new Date().getFullYear()} Afik Yefet
             </Typography.Text>
-            <Space 
-              wrap 
+            <Space
+              wrap
               size={screens.xs ? 8 : 12}
               style={{ width: screens.xs ? '100%' : 'auto' }}
             >
               {contacts.map((c) => (
-                <Button 
-                  key={c.name} 
-                  type="link" 
-                  href={c.url} 
-                  target="_blank" 
+                <Button
+                  key={c.name}
+                  type="link"
+                  href={c.url}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  style={{ 
+                  style={{
                     fontSize: screens.xs ? 13 : 14,
                     padding: screens.xs ? '4px 8px' : undefined,
                     color: 'rgba(255,255,255,0.7)'
