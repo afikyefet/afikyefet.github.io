@@ -892,6 +892,7 @@ function App() {
 
             <List
               bordered
+              style={{ border: 'none' }}
               dataSource={contacts}
               renderItem={(c) => (
                 <Reveal direction="right" distance={30}>
