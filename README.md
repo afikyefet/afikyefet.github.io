@@ -11,8 +11,6 @@ Building internal tools + products
 - **LinkedIn:** [linkedin.com/in/afik-yefet-906757326](https://www.linkedin.com/in/afik-yefet-906757326/)
 - **GitHub:** [github.com/afikyefet](https://github.com/afikyefet)
 - **LeetCode:** [leetcode.com/u/afikyefet](https://leetcode.com/u/afikyefet/)
-- **Facebook:** [facebook.com/afik.yefet](https://www.facebook.com/afik.yefet)
-
 ---
 
 ## About
